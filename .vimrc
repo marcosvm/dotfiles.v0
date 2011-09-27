@@ -52,6 +52,7 @@ set laststatus=2
 set showmatch
 set incsearch
 set hls
+set list listchars=tab:\ \ ,trail:·
 
 if has("gui_running")
 "  :set lines=100
@@ -59,13 +60,13 @@ if has("gui_running")
   :set cursorline
   " hide toolbar
   :set go-=T
+  :colorscheme solarized
 endif
 
 " set wildmode=longest,list
 
 :set t_Co=256
 :set background=light
-:colorscheme solarized
 
 let mapleader=","
 
