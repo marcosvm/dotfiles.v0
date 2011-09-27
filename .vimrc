@@ -1,8 +1,10 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
+call pathogen#infect()
+
 " use vim settings
 set nocompatible
-
 set history=1000
-
 set wildmenu
 
 " ignore case when searching
@@ -62,7 +64,8 @@ endif
 " set wildmode=longest,list
 
 :set t_Co=256
-" :color solarized
+:set background=light
+:colorscheme solarized
 
 let mapleader=","
 
@@ -111,7 +114,3 @@ map <Left> :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
-
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-
-call pathogen#infect()
