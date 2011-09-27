@@ -61,6 +61,8 @@ if has("gui_running")
   " hide toolbar
   :set go-=T
   :colorscheme solarized
+else
+  :colorscheme wombat256
 endif
 
 " set wildmode=longest,list
@@ -70,7 +72,7 @@ endif
 
 let mapleader=","
 
-set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+set statusline=%<%f\ (%{&ft})\ %{fugitive#statusline()}\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 :hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
 
 :nnoremap <CR> :nohlsearch<cr>
