@@ -53,6 +53,9 @@ set showmatch
 set incsearch
 set hls
 set list listchars=tab:\ \ ,trail:·
+set winwidth=100
+set ruler
+set showcmd
 
 if has("gui_running")
 "  :set lines=100
@@ -61,6 +64,8 @@ if has("gui_running")
   " hide toolbar
   :set go-=T
   :colorscheme solarized
+  set guioptions-=L
+  set guioptions-=r
 else
   :colorscheme wombat256
 endif
