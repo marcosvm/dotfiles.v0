@@ -130,6 +130,10 @@ map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
 map <leader>T :CommandTFlush<cr>\|:CommandT %%<cr>
 
+" Command / for TextMate convertees
+map <D-/> <plug>Commentary
+imap <D-/> <Esc><plug>Commentary
+
 map <Left> :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
