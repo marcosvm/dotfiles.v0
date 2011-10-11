@@ -16,3 +16,6 @@ url = https://github.com/tpope/vim-fugitive.git
 [submodule ".vim/bundle/vim-commentary"]
 path = .vim/bundle/vim-commentary
 url = https://github.com/tpope/vim-commentary.git
+[submodule ".vim/bundle/ack"]
+path = .vim/bundle/ack
+url = https://github.com/mileszs/ack.vim.git
