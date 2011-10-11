@@ -96,6 +96,13 @@ function! GreenBar()
   echohl
 endfunction
 
+function! YellowBar()
+  hi YellowBar ctermfg=white ctermbg=green guibg=yellow
+  echohl YellowBar
+  echon repeat(" ",&columns - 1)
+  echohl
+endfunction
+
 :set cmdheight=2
 
 augroup myfiletypes
@@ -127,12 +134,16 @@ map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
 map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
 map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets/sass<cr>
 map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
+map <leader>gt :CommandTFlush<cr>\|:CommandT test<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
 map <leader>T :CommandTFlush<cr>\|:CommandT %%<cr>
 
 " Command / for TextMate convertees
 map <D-/> <plug>Commentary
 imap <D-/> <Esc><plug>Commentary
+
+imap ` <Esc>
+imap jj <Esc>
 
 map <Left> :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
