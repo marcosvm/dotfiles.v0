@@ -142,7 +142,6 @@ map <leader>T :CommandTFlush<cr>\|:CommandT %%<cr>
 map <D-/> <plug>Commentary
 imap <D-/> <Esc><plug>Commentary
 
-imap ` <Esc>
 imap jj <Esc>
 
 map <Left> :echo "no!"<cr>
