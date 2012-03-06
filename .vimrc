@@ -2,6 +2,9 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 
 call pathogen#infect()
 
+" enable 256 colors
+set t_CO=256
+
 " use vim settings
 set nocompatible
 set history=1000
@@ -67,7 +70,7 @@ if has("gui_running")
   set guioptions-=L
   set guioptions-=r
 else
-  :colorscheme wombat256
+  :colorscheme grb256
 endif
 
 " set wildmode=longest,list
@@ -148,3 +151,5 @@ map <Left> :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
+
+set vb
