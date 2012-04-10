@@ -2,9 +2,6 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 
 call pathogen#infect()
 
-" enable 256 colors
-set t_CO=256
-
 " use vim settings
 set nocompatible
 set history=1000
@@ -63,10 +60,10 @@ set showcmd
 if has("gui_running")
 "  :set lines=100
 "  :set columns=171
-  :set cursorline
+  set cursorline
   " hide toolbar
-  :set go-=T
-  :colorscheme solarized
+  set go-=T
+  colorscheme solarized
   set guioptions-=L
   set guioptions-=r
 else
@@ -75,8 +72,8 @@ endif
 
 " set wildmode=longest,list
 
-:set t_Co=256
-:set background=light
+set t_Co=256
+set background=light
 
 let mapleader=","
 
@@ -106,7 +103,7 @@ function! YellowBar()
   echohl
 endfunction
 
-:set cmdheight=2
+set cmdheight=2
 
 augroup myfiletypes
   autocmd!
