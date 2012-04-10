@@ -19,6 +19,6 @@ url = https://github.com/tpope/vim-commentary.git
 [submodule ".vim/bundle/ack"]
 path = .vim/bundle/ack
 url = https://github.com/mileszs/ack.vim.git
-[submodule "bundle/vim-less"]
-	path = bundle/vim-less
-	url = https://github.com/groenewege/vim-less.git
+[submodule ".vim/bundle/vim-less"]
+path = .vim/bundle/vim-less
+url = https://github.com/groenewege/vim-less.git
