@@ -150,3 +150,7 @@ map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
 
 set vb
+
+noremap <F1> :set invfullscreen<CR>
+inoremap <F1> <ESC>:set invfullscreen<CR>
+
