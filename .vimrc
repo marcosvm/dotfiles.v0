@@ -26,14 +26,18 @@ set backspace=indent,eol,start
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  set guifont=Monaco:h14
+  " set guifont=Monaco:h14
+  " set guifont=Menlo:h12
+  set gfn=Inconsolata:h14
 endif
 
 if has("autocmd")
   filetype plugin indent on
   augroup vimrcEx
   au!
-  autocmd FileType text setlocal textwidth=140
+  autocmd FileType text setlocal textwidth=78
+  " this jumps to the last line edited when reopening a file
+  " g`" == ge backtick double-quote
   autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
@@ -53,6 +57,7 @@ set showmatch
 set incsearch
 set hls
 set list listchars=tab:\ \ ,trail:·
+" set list listchars=tab:\ \ ,trail:·,eol:¬
 set winwidth=100
 set ruler
 set showcmd
@@ -63,17 +68,21 @@ if has("gui_running")
   set cursorline
   " hide toolbar
   set go-=T
-  colorscheme solarized
+  " let g:molokai_original=1
+  " colorscheme molokai
+  colorscheme Tomorrow-Night-Eighties
+  " set background=light
+  " colorscheme solarized
+  " colorscheme ir_black
   set guioptions-=L
   set guioptions-=r
 else
-  :colorscheme grb256
+  :colorscheme Tomorrow-Night-Eighties
 endif
 
 " set wildmode=longest,list
 
 set t_Co=256
-set background=light
 
 let mapleader=","
 
@@ -81,6 +90,7 @@ set statusline=%<%f\ (%{&ft})\ %{fugitive#statusline()}\ %-4(%m%)%=%-19(%3l,%02c
 :hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
 
 :nnoremap <CR> :nohlsearch<cr>
+:imap <c-l> <space>=><space>
 
 function! RedBar()
   hi RedBar ctermfg=white ctermbg=red guibg=red
@@ -154,3 +164,8 @@ set vb
 noremap <F1> :set invfullscreen<CR>
 inoremap <F1> <ESC>:set invfullscreen<CR>
 
+map ,a ggVG
+
+let g:gist_detect_filetype = 1
+let g:gist_clip_command = 'pbcopy'
+let g:gist_post_private = 1
