@@ -43,3 +43,6 @@ url = https://github.com/groenewege/vim-less.git
 [submodule ".vim/bundle/webapi-vim"]
 	path = .vim/bundle/webapi-vim
 	url = https://github.com/mattn/webapi-vim.git
+[submodule ".vim/bundle/vundle"]
+	path = .vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git
