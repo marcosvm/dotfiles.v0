@@ -94,6 +94,9 @@ augroup myfiletypes
   autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 augroup END
 
+" remove trailing spaces when saving ruby files
+au BufWritePre *.rb :%s/\s\+$//e
+
 " gui settings
 if has("gui_running")
   set cursorline
@@ -110,15 +113,18 @@ nnoremap <CR> :nohlsearch<cr>
 map <D-/> <plug>Commentary
 imap <D-/> <Esc><plug>Commentary
 imap jj <Esc>
-" ,e and ,v edit/view in the same directory as the current file
+" actions for the same directory as the current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
-map <leader>v :view %%
+map <Leader>s :split %%<CR>
+map <Leader>v :vnew %%<CR>
 map <Left> :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
 map ,a ggVG
+imap <Tab> <C-P>
+
 " functions
 function! RedBar()
   hi RedBar ctermfg=white ctermbg=red guibg=red
@@ -145,3 +151,6 @@ endfunction
 let g:gist_detect_filetype = 1
 let g:gist_clip_command = 'pbcopy'
 let g:gist_post_private = 1
+
+hi StatusLine ctermfg=blue ctermbg=yellow
+hi Pmenu ctermbg=gray ctermfg=black
