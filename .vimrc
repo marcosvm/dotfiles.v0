@@ -123,7 +123,7 @@ map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
 map ,a ggVG
-
+imap <C-l> =>
 " functions
 function! RedBar()
   hi RedBar ctermfg=white ctermbg=red guibg=red
