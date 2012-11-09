@@ -123,7 +123,7 @@ map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
 map ,a ggVG
-imap <C-l> =>
+imap <C-l> <space>=><space>
 " functions
 function! RedBar()
   hi RedBar ctermfg=white ctermbg=red guibg=red
@@ -153,3 +153,4 @@ let g:gist_post_private = 1
 
 hi StatusLine ctermfg=blue ctermbg=yellow
 hi Pmenu ctermbg=gray ctermfg=black
+hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
