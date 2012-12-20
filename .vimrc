@@ -154,3 +154,6 @@ let g:gist_post_private = 1
 hi StatusLine ctermfg=blue ctermbg=yellow
 hi Pmenu ctermbg=gray ctermfg=black
 hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
+
+" show md5 checksum for current buffer or selection
+command! -range Md5 :echo system('echo '.shellescape(join(getline(<line1>, <line2>), '\n')) . '| md5')
