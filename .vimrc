@@ -17,11 +17,13 @@
  Bundle 'tpope/vim-surround'
  Bundle 'altercation/vim-colors-solarized'
  Bundle 'kchmck/vim-coffee-script'
- Bundle 'nono/vim-handlebar'
+ Bundle 'Handlebars'
  Bundle 'mileszs/ack.vim'
  Bundle 'chriskempson/vim-tomorrow-theme'
  Bundle 'mattn/webapi-vim'
  Bundle 'mattn/gist-vim'
+ Bundle 'Syntastic'
+ Bundle 'airblade/vim-gitgutter'
 
  filetype plugin indent on     " required!
  "
@@ -94,8 +96,17 @@ augroup myfiletypes
   autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 augroup END
 
+au BufRead,BufNewFile *.hbs setfiletype handlebars
+au BufRead,BufNewFile *.handlebars setfiletype handlebars
+
 " remove trailing spaces when saving ruby files
 au BufWritePre *.rb :%s/\s\+$//e
+au BufWritePre *.sql :%s/\s\+$//e
+au BufWritePre *.erb :%s/\s\+$//e
+au BufWritePre *.js :%s/\s\+$//e
+au BufWritePre *.yml :%s/\s\+$//e
+au BufWritePre *.scss :%s/\s\+$//e
+au BufWritePre *.sass :%s/\s\+$//e
 
 " gui settings
 if has("gui_running")
@@ -103,7 +114,8 @@ if has("gui_running")
   set guioptions-=T
   set guioptions-=L
   set guioptions-=r
-  set gfn=Inconsolata:h14
+  set gfn=Monaco:h14
+  set background=light
   colorscheme Tomorrow-Night-Eighties
 endif
 
@@ -124,6 +136,10 @@ map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
 map ,a ggVG
 imap <C-l> <space>=><space>
+nmap <C-e> :b#<CR>
+
+vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
 " functions
 function! RedBar()
   hi RedBar ctermfg=white ctermbg=red guibg=red
@@ -152,8 +168,14 @@ let g:gist_clip_command = 'pbcopy'
 let g:gist_post_private = 1
 
 hi StatusLine ctermfg=blue ctermbg=yellow
+hi LineNr ctermfg=yellow
+highlight SignColumn ctermbg=black
 hi Pmenu ctermbg=gray ctermfg=black
 hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
 
 " show md5 checksum for current buffer or selection
 command! -range Md5 :echo system('echo '.shellescape(join(getline(<line1>, <line2>), '\n')) . '| md5')
+
+" experimental
+" F5 mapped to remove trailing white space
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
