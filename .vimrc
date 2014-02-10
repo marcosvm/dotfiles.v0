@@ -1,9 +1,15 @@
  set nocompatible               " be iMproved
  filetype off                   " required!
 
+" profile start syntastic.log
+" profile! file */syntastic/*
+
  set rtp+=~/.vim/bundle/vundle/
  call vundle#rc()
 
+set rtp+=$GOROOT/misc/vim
+set rtp+=~/go/src/github.com/golang/lint/misc/vim
+"
  " let Vundle manage Vundle
  " required! 
  Bundle 'gmarik/vundle'
@@ -15,6 +21,7 @@
  Bundle 'tpope/vim-rails.git'
  Bundle 'tpope/vim-commentary'
  Bundle 'tpope/vim-surround'
+ Bundle 'tpope/vim-vividchalk'
  Bundle 'altercation/vim-colors-solarized'
  Bundle 'kchmck/vim-coffee-script'
  Bundle 'Handlebars'
@@ -24,7 +31,10 @@
  Bundle 'mattn/gist-vim'
  Bundle 'Syntastic'
  Bundle 'airblade/vim-gitgutter'
-
+ Bundle 'Align'
+ Bundle 'rizzatti/funcoo.vim'
+ Bundle 'rizzatti/dash.vim'
+ Bundle 'jiangmiao/auto-pairs'
  filetype plugin indent on     " required!
  "
  " Brief help
@@ -35,13 +45,6 @@
 
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
-
-augroup myfiletypes
-  "Clear old autocmds in group
-  autocmd!
-  " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
-augroup END
 
 " settings
 set history=1000
@@ -88,7 +91,6 @@ if has("autocmd")
   augroup END
 endif
 
-syntax on
 set statusline=%<%f\ (%{&ft})\ %{fugitive#statusline()}\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 augroup myfiletypes
@@ -98,8 +100,13 @@ augroup END
 
 au BufRead,BufNewFile *.hbs setfiletype handlebars
 au BufRead,BufNewFile *.handlebars setfiletype handlebars
+au BufRead,BufNewFile Capfile setfiletype ruby
+au BufRead,BufNewFile Gemfile setfiletype ruby
+au BufRead,BufNewFile Berksfile setfiletype ruby
+au BufRead,BufNewFile Vagrantfile setfiletype ruby
+au BufRead,BufNewFile *.json setfiletype javascript
 
-" remove trailing spaces when saving ruby files
+" remove trailing spaces when saving
 au BufWritePre *.rb :%s/\s\+$//e
 au BufWritePre *.sql :%s/\s\+$//e
 au BufWritePre *.erb :%s/\s\+$//e
@@ -107,6 +114,10 @@ au BufWritePre *.js :%s/\s\+$//e
 au BufWritePre *.yml :%s/\s\+$//e
 au BufWritePre *.scss :%s/\s\+$//e
 au BufWritePre *.sass :%s/\s\+$//e
+au BufWritePre *.erl :%s/\s\+$//e
+
+" run go fmt when saving
+au FileType go au BufWritePre <buffer> Fmt
 
 " gui settings
 if has("gui_running")
@@ -114,9 +125,9 @@ if has("gui_running")
   set guioptions-=T
   set guioptions-=L
   set guioptions-=r
-  set gfn=Monaco:h14
+  set gfn=Monaco:h12
   set background=light
-  colorscheme Tomorrow-Night-Eighties
+  colorscheme codeschool
 endif
 
 " mappings
@@ -134,8 +145,11 @@ map <Left> :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
+" select all
 map ,a ggVG
+" ruby's old hash
 imap <C-l> <space>=><space>
+" go to the previously opened buffer
 nmap <C-e> :b#<CR>
 
 vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
@@ -156,7 +170,7 @@ function! GreenBar()
 endfunction
 
 function! YellowBar()
-  hi YellowBar ctermfg=white ctermbg=green guibg=yellow
+  hi YellowBar ctermfg=white ctermbg=yellow guibg=yellow
   echohl YellowBar
   echon repeat(" ",&columns - 1)
   echohl
@@ -179,3 +193,5 @@ command! -range Md5 :echo system('echo '.shellescape(join(getline(<line1>, <line
 " experimental
 " F5 mapped to remove trailing white space
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+
+" let g:syntastic_mode_map = { 'mode' : 'active', 'active_filetypes': ['ruby', 'javascript'], 'passive_filetypes': ['go']}
