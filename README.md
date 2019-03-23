@@ -8,5 +8,5 @@ The dotfiles
 brew bundle
 
 # copy dotfiles to the appropriate places
-make
+./setup.sh
 ```
