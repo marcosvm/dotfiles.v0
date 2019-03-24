@@ -5,12 +5,9 @@ call minpac#add('tpope/vim-fugitive')
 call minpac#add('fatih/vim-go', {'do': ':GoInstallBinaries'})
 call minpac#add('AndrewRadev/splitjoin.vim') "support for gS and gJ
 call minpac#add('elixir-editors/vim-elixir')
-call minpac#add('morhetz/gruvbox')
 set nu
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-colorscheme gruvbox
 
 syn off
 set ruler
