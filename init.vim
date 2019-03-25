@@ -9,7 +9,7 @@ set nu
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-syn off
+syn on
 set ruler
 set incsearch
 set number
@@ -23,6 +23,8 @@ set expandtab
 set visualbell
 set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 map ; :
+
+au Filetype go setlocal syntax=OFF
 
 " go to the last edited position in file
 au BufReadPost *
