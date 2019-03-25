@@ -18,6 +18,8 @@ brew "graphviz"
 brew "htop"
 # Network logon cracker which supports many services
 brew "hydra"
+# Tool to capture still images from an iSight or other video source
+brew "imagesnap"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Protocol buffers (Google's data interchange format)
