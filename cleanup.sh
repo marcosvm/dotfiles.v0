@@ -7,3 +7,6 @@ set -euxo pipefail
 
 # Alacritty
 [ -f ~/.config/alacritty/alacritty.yml ] && rm ~/.config/alacritty/alacritty.yml
+
+# tmux
+[ -f ~/.tmux.conf ] && rm ~/.tmux.conf

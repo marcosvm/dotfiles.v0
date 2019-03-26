@@ -9,3 +9,6 @@ set -euxo pipefail
 # Alacritty
 [ -d ~/.config/alacritty ] || mkdir -p ~/.config/alacritty
 [ -f ~/.config/alacritty/alacritty.yml ] || ln -s "${PWD}/alacritty.yml" ~/.config/alacritty/alacritty.yml
+
+# tmux
+[ -f ~/.tmux.conf ] || ln -s "${PWD}/tmux.conf" ~/.tmux.conf
