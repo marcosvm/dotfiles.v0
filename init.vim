@@ -55,3 +55,4 @@ map <C-e> :b#<CR>
 nnoremap <leader>wat oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
 
 let g:go_fmt_command = "goimports"
+imap <C-L> <space>=><space>
