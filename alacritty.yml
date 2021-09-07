@@ -1,3 +1,6 @@
+#import:
+#- /Users/marcos.oliveira/code/alacritty-colors/nord.yml
+
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Any items in the `env` entry below will be added as
@@ -43,8 +46,7 @@ window:
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   decorations: full
 
-  # When true, alacritty starts maximized.
-  start_maximized: false
+  start_mode: maximized
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -54,27 +56,6 @@ scrolling:
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
   multiplier: 3
-
-  # Faux Scrolling
-  #
-  # The `faux_multiplier` setting controls the number of lines the terminal
-  # should scroll when the alternate screen buffer is active. This is used
-  # to allow mouse scrolling for applications like `man`.
-  #
-  # Specifying `0` will disable faux scrolling.
-  faux_multiplier: 3
-
-  # Scroll to the bottom when new text is written to the terminal.
-  auto_scroll: false
-
-# Spaces per Tab (changes require restart)
-#
-# This setting defines the width of a tab in cells.
-#
-# Some applications, like Emacs, rely on knowing about the width of a tab.
-# To prevent unexpected behavior in these applications, it's also required to
-# change the `it` value in terminfo when altering this setting.
-tabspaces: 8
 
 # Font configuration (changes require restart)
 font:
@@ -86,10 +67,11 @@ font:
     #   - (macOS) Monaco
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: Monaco
+    family: Fira Code
+    style: Retina
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    # style: Regular
 
   # Bold font face
   bold:
@@ -97,7 +79,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Monaco
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -108,7 +90,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Monaco
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -145,64 +127,65 @@ font:
   # effect.
   use_thin_strokes: true
 
-# Display the time it takes to redraw each frame.
-render_timer: false
+  debug:
+    # Display the time it takes to redraw each frame.
+    render_timer: false
 
-# Keep the log file after quitting Alacritty.
-persistent_logging: false
+    # Keep the log file after quitting Alacritty.
+    persistent_logging: false
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# nord theme https://github.com/arcticicestudio/nord-alacritty/blob/develop/src/nord.yml
-colors:
-  primary:
-    background: '0x2E3440'
-    foreground: '0xD8DEE9'
-  cursor:
-    text: '0x2E3440'
-    cursor: '0xD8DEE9'
-  normal:
-    black: '0x3B4252'
-    red: '0xBF616A'
-    green: '0xA3BE8C'
-    yellow: '0xEBCB8B'
-    blue: '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan: '0x88C0D0'
-    white: '0xE5E9F0'
-  bright:
-    black: '0x4C566A'
-    red: '0xBF616A'
-    green: '0xA3BE8C'
-    yellow: '0xEBCB8B'
-    blue: '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan: '0x8FBCBB'
-    white: '0xECEFF4'
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '0x000000'
-  #  red:     '0x8c3336'
-  #  green:   '0x7a8530'
-  #  yellow:  '0x97822e'
-  #  blue:    '0x506d8f'
-  #  magenta: '0x80638e'
-  #  cyan:    '0x497e7a'
-  #  white:   '0x9a9a9a'
-
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
-  #
-  indexed_colors: []
+## nord theme https://github.com/arcticicestudio/nord-alacritty/blob/develop/src/nord.yml
+#colors:
+#  primary:
+#    background: '0x2E3440'
+#    foreground: '0xD8DEE9'
+#  cursor:
+#    text: '0x2E3440'
+#    cursor: '0xD8DEE9'
+#  normal:
+#    black: '0x3B4252'
+#    red: '0xBF616A'
+#    green: '0xA3BE8C'
+#    yellow: '0xEBCB8B'
+#    blue: '0x81A1C1'
+#    magenta: '0xB48EAD'
+#    cyan: '0x88C0D0'
+#    white: '0xE5E9F0'
+#  bright:
+#    black: '0x4C566A'
+#    red: '0xBF616A'
+#    green: '0xA3BE8C'
+#    yellow: '0xEBCB8B'
+#    blue: '0x81A1C1'
+#    magenta: '0xB48EAD'
+#    cyan: '0x8FBCBB'
+#    white: '0xECEFF4'
+#  # Dim colors
+#  #
+#  # If the dim colors are not set, they will be calculated automatically based
+#  # on the `normal` colors.
+#  #dim:
+#  #  black:   '0x000000'
+#  #  red:     '0x8c3336'
+#  #  green:   '0x7a8530'
+#  #  yellow:  '0x97822e'
+#  #  blue:    '0x506d8f'
+#  #  magenta: '0x80638e'
+#  #  cyan:    '0x497e7a'
+#  #  white:   '0x9a9a9a'
+#
+#  # Indexed Colors
+#  #
+#  # The indexed colors include all colors from 16 to 256.
+#  # When these are not set, they're filled with sensible defaults.
+#  #
+#  # Example:
+#  #   `- { index: 16, color: '0xff00ff' }`
+#  #
+#  indexed_colors: []
 
 # Visual Bell
 #
@@ -225,7 +208,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
   color: '0xffffff'
@@ -266,7 +249,7 @@ mouse:
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: false
 
-  url:
+  hints:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a URL.
@@ -293,7 +276,7 @@ selection:
   save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
+window.dynamic_title: true
 
 cursor:
   # Cursor style
@@ -320,7 +303,7 @@ live_config_reload: true
 #   - (Linux/macOS) /bin/bash --login
 #   - (Windows) powershell
 shell:
-  program: /bin/bash
+  program: /bin/zsh
   args:
     - --login
 
